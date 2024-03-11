@@ -8,3 +8,8 @@ docker swarm join --token SWMTKN-1-58k85nparlwp9fbc1c8eg3ec2o209o6rwuufd2qln750q
 
 docker swarm join --token SWMTKN-1-2sjlswf0j9fd6i5bdvfnc1e5si9o3s03wcxin7vcm8evpe85qb-9mpgptx11hhshzytac29f1ge7 192.168.1.39:2377
 
+
+
+docker run --rm alpine ip route | awk 'NR==1 {print $3}'
+export EXTERNAL_IP=192.168.1.39
+export DOCKER_VM_IP=172.17.0.1
