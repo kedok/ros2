@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+    turtle_sim:
+        image: demo:latest
+        build:
+            context: ../
+            dockerfile: ./docker/Dockerfile
+            args:
+              ROS_DISTRO: foxy
+        command: ros2 run turtlesim turtlesim_node
+        environment:
+            - DISPLAY=novnc:0.0
+        networks:
+          - ros2
+        depends_on:
+          - novnc
+        restart: always
+    talker:
+      image: core:latest
+      command: ros2 run demo_nodes_cpp talker
+    listener:
+        image: core:latest
+        command: ros2 run demo_nodes_cpp listener
+        depends_on:
+          - talker
+    novnc:
+      image: theasp/novnc:latest
+      environment:
+        # Adjust to your screen size
+        - DISPLAY_WIDTH=1600
+        - DISPLAY_HEIGHT=968
+      ports:
+        - "8080:8080"
+      networks:
+        - ros2
+      restart: always
+networks:
+  ros2:
+    name: ros2
