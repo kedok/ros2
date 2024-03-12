@@ -15,3 +15,6 @@ export EXTERNAL_IP=192.168.1.39
 export DOCKER_VM_IP=172.17.0.1
 
 docker swarm join --token SWMTKN-1-2rdi925wpzblz5zadar88ahmhdgn1e22g61pbty0xq2kci5zuh-cqnqhxbk91esjynu9jfg2g2tr 192.168.1.39:2377
+
+
+docker swarm join --token SWMTKN-1-4xf44b6gs69l3pclcggnq203cganw5lqla3eo94r6sg9pdb4an-0ir8ndiakm4kndmm0qw39q939 192.168.65.3:2377
